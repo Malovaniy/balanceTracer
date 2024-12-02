@@ -2,22 +2,22 @@
   <h1 class="mx-2">Expense Tracker</h1>
   <div class="m-2 ">
     <label for="name" class="mr-2">Name</label>
-    <input id="name" formControlName="name" type="text" class="form-control" />
+    <input id="name" formControlName="name" type="text" class="text-black" />
   </div>
   <div class="m-2">
     <label for="amount" class="mr-2">Amount</label>
-    <input id="amount" formControlName="amount" type="numxer" class="form-control" />
+    <input id="amount" formControlName="amount" type="numxer" class="text-black" />
   </div>
   <div class="m-2">
     <label for="type" class="mr-2">Transaction Type</label>
-    <select id="type" formControlName="type" class="form-control">
+    <select id="type" formControlName="type" class="text-black">
       <option value="income">Income</option>
       <option value="expense">Expense</option>
     </select>
   </div>
   <div class="m-2">
     <label for="category" class="mr-2">Category</label>
-    <select id="category" formControlName="category" class="form-control">
+    <select id="category" formControlName="category" class="text-black">
       @for (category of categories; track $index) {
       <option [value]="category">{{ category }}</option>
       }
@@ -25,7 +25,7 @@
   </div>
   <div class="m-2">
     <label for="date" class="mr-2">Date</label>
-    <input id="date" formControlName="date" type="date" class="form-control" />
+    <input id="date" formControlName="date" type="date" class="text-black" />
   </div>
   <button
     class="py-0 px-5 h-8 bg-green-500 text-white font-semibold rounded-full shadow-md hover:bg-green-700 focus:outline-none focus:ring focus:ring-green-400 focus:ring-opacity-75"
