@@ -36,7 +36,13 @@ export class TransactionFormComponent {
     if (this.transactionForm.valid) {
       const transaction: Transaction = {
         id: uuidv4(),
-        ...this.transactionForm.value,
+        ...{
+          ...this.transactionForm.value,
+          amount:
+            this.transactionForm.value.type === 'expense'
+              ? -this.transactionForm.value.amount
+              : this.transactionForm.value.amount,
+        },
       };
       this.transactionAdded.emit(transaction);
       this.transactionForm.reset({

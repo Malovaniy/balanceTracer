@@ -43,8 +43,7 @@ export class TransactionListComponent {
 
   get balance(): number {
     return this.filteredTransactions.reduce(
-      (acc, t) =>
-        acc + (t.type === 'income' ? Number(t.amount) : Number(-t.amount)),
+      (acc, t) => acc + Number(t.amount),
       0
     );
   }
