@@ -1,0 +1,52 @@
+<div class="flex bg-gray-400 text-white drop-shadow">
+  <div class="p-2">
+    <label for="categoryFilter" class="form-label">Filter by Category</label>
+    <select id="categoryFilter" [(ngModel)]="selectedCategory" class="form-select">
+      <option value="All">All</option>
+      <option *ngFor="let category of categories" [value]="category">
+        {{ category }}
+      </option>
+    </select>
+  </div>
+
+  <div class="p-2">
+    <label for="typeFilter" class="form-label">Filter by Type</label>
+    <select id="typeFilter" [(ngModel)]="selectedType" class="form-select">
+      <option value="All">All</option>
+      <option value="income">Income</option>
+      <option value="expense">Expense</option>
+    </select>
+  </div>
+
+  <div class="p-2">
+    <label for="sortOption" class="form-label">Sort By</label>
+    <select id="sortOption" [(ngModel)]="sortOption" class="form-select">
+      <option value="date">Date</option>
+      <option value="amount">Amount</option>
+    </select>
+  </div>
+
+  <div class="p-2">
+    <label for="sortDirection" class="form-label">Sort Direction</label>
+    <select id="sortDirection" [(ngModel)]="sortDirection" class="form-select">
+      <option value="asc">Ascending</option>
+      <option value="desc">Descending</option>
+    </select>
+  </div>
+</div>
+<div class="bg-gray-100 flex flex-col overflow-hidden h-full p-2">
+
+  <h3>Balance: {{ balance | currency }}</h3>
+  <div class="h-full flex flex-col overflow-auto">
+    <div *ngFor="let transaction of filteredTransactions"
+      class="list-group-item flex justify-between	align-items-center m-1 p-2 rounded-xl bg-slate-300">
+      <div>
+        <h5>{{ transaction.name }}</h5>
+        <small>{{ transaction.category }} - {{ transaction.date }}</small>
+      </div>
+      <span [class.text-green-500]="transaction.type === 'income'" [class.text-red-500]="transaction.type === 'expense'">
+        {{ transaction.amount | currency }}
+      </span>
+    </div>
+  </div>
+</div>

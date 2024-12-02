@@ -1,0 +1,33 @@
+<div [formGroup]="transactionForm" class="flex justify-center text-white bg-emerald-800 drop-shadow items-center flex-wrap p-2">
+  <h1 class="mx-2">Expense Tracker</h1>
+  <div class="m-2 ">
+    <label for="name" class="mr-2">Name</label>
+    <input id="name" formControlName="name" type="text" class="form-control" />
+  </div>
+  <div class="m-2">
+    <label for="amount" class="mr-2">Amount</label>
+    <input id="amount" formControlName="amount" type="numxer" class="form-control" />
+  </div>
+  <div class="m-2">
+    <label for="type" class="mr-2">Transaction Type</label>
+    <select id="type" formControlName="type" class="form-control">
+      <option value="income">Income</option>
+      <option value="expense">Expense</option>
+    </select>
+  </div>
+  <div class="m-2">
+    <label for="category" class="mr-2">Category</label>
+    <select id="category" formControlName="category" class="form-control">
+      @for (category of categories; track $index) {
+      <option [value]="category">{{ category }}</option>
+      }
+    </select>
+  </div>
+  <div class="m-2">
+    <label for="date" class="mr-2">Date</label>
+    <input id="date" formControlName="date" type="date" class="form-control" />
+  </div>
+  <button
+    class="py-0 px-5 h-8 bg-green-500 text-white font-semibold rounded-full shadow-md hover:bg-green-700 focus:outline-none focus:ring focus:ring-green-400 focus:ring-opacity-75"
+    (click)="addTransaction()" [ngClass]="{'!bg-gray-400': transactionForm.invalid}" [disabled]="transactionForm.invalid">Add</button>
+</div>
